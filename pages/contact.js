@@ -1,22 +1,30 @@
 import React, { useState } from "react";
 
 const Contact = () => {
+  const [userInfo, setUserInfo] = useState({});
 
-  const [userInfo, setUserInfo] = useState({})
+  const handleInput = (e) => {
+    e.preventDefault();
+    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+  };
 
+  const submitForm = async () => {
+    let data = await fetch("http://localhost:3000/api/submitContact", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userInfo),
+    });
 
-
-  const handleInput =(e) => {
-        e.preventDefault()
-        console.log('e.target.value ?????', e.target.value, e.target.name );
-        setUserInfo({ ...userInfo, [e.target.name]: e.target.value  })
-      
-  }
-
-  const submitForm =() => {
-    console.log(userInfo);
-    setUserInfo({ email:'', phone:'' })
-  }
+    let actualData = await data.json();
+    if (actualData.success) {
+      alert("Sucesss");
+    } else {
+      alert(`Failed`);
+    }
+    setUserInfo({ email: "", phone: "" });
+  };
   return (
     <>
       <div className="soumya">
@@ -41,7 +49,7 @@ const Contact = () => {
                 required
                 value={userInfo.phone}
                 onChange={(e) => handleInput(e)}
-                name='phone'
+                name="phone"
               />
             </fieldset>
             <fieldset>
