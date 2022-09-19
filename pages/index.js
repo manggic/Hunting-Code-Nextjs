@@ -40,7 +40,8 @@ export default function Home() {
         <h3 style={{ color: "blue", fontSize: "20px" }}>Popular Blogs </h3>
         {/* <Image src="/image.jpg" width={200} height={200} /> */}
 
-        {allBlog.map((blog, index) => {
+       <ul>
+       {allBlog.map((blog, index) => {
           return (
             <Link
               href={`/blogpost/${blog.blogName
@@ -48,13 +49,14 @@ export default function Home() {
                 .join("_")
                 .toLocaleLowerCase()}`}
             >
-              <p style={{ cursor: "pointer" }}>
-                {" "}
-                {index + 1}. {blog.blogName}
-              </p>
+              <li style={{ cursor: "pointer", padding: '10px 0px' }}>
+                 {blog.blogName}
+              </li>
             </Link>
           );
         })}
+       </ul>
+        
       </main>
 
       <footer className={styles.footer}></footer>

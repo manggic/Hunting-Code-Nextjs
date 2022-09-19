@@ -25,6 +25,8 @@ const Navbar = () => {
         {`
           .navbar ul {
             display: flex;
+    justify-content: center;
+    margin-top: 20px;
           }
 
           .navbar ul a {

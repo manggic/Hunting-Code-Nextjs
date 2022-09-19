@@ -6,12 +6,12 @@ const Blog = ({ allBlog }) => {
   // }, []);
 
   return (
-    <div style={{ paddingTop: "50px", paddingLeft: "50px" }}>
+    <div style={{ margin: "auto", width: "50vw", paddingTop:'30px' }}>
       {allBlog &&
         allBlog?.map((blog, index) => {
           return (
             <div key={index}>
-              <h3>{blog.title}</h3>
+              <h3  style={{textAlign:'center'}}> {blog.title}</h3>
               <h5> - {blog.description}</h5>
             </div>
           );
